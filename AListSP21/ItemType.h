@@ -18,6 +18,7 @@ public:
 	RelationType ComparedTo(ItemType item_);
 	void Set(type item_) { item = item_; };
 	type Get() { return item; };
+	type getValue() { return item; };
 
 private:
 	type item;

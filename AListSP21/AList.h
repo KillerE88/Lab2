@@ -6,25 +6,11 @@
 
 using namespace std;
 
-class Node 
-{
-private:
-	typedef struct node {
-		ItemType data;
-		node* next;
-	};
-	ItemType value;
-	Node* Wolf;
-	Node* Pup;
-public:
-	void setPup(Node* newPup) { Pup = newPup; }
-	void setWolf(Node* newWolf) { Wolf = newWolf; }
-	Node* getPup() { return Pup; }
-	Node* getWolf() { return Wolf; }
-	Node(ItemType newValue) { value = newValue; }
-	void setValue(ItemType newValue) { value = newValue; }
-	ItemType getValue() { return value; }
+struct node {
+	ItemType data;
+	node* next;
 };
+
 class PList
 {
 public:
@@ -32,25 +18,23 @@ public:
 	ItemType getValue() { return value; }
 	PList();
 	~PList();
-	Node* Location = nullptr;
 	void emptyList();
-	bool listFull() const;
+	bool listFull();
 	int getLength();
 	ItemType itemGet(ItemType item, bool& found);
 	void itemPlace(ItemType item);
 	void removeItem(ItemType item);
 	void Reset();
 	ItemType nextItem();
-	PList Union(PList list1);
-	PList* findIndex(int Index);
-	string display();
-	PList* detect(ItemType value);
+	PList* Union(PList* unionList, PList* list1, PList* list2);
+	ItemType findIndex(ItemType inputData);
+	void display();
 
 private:
 	int length;
-	Node* head = nullptr;
-	Node* tail = nullptr;
 	int maxLength = 100;
+	node* start;
+	node* currentPos;
 	
 
 };
