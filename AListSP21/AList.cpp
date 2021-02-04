@@ -11,21 +11,25 @@ PList::PList() {
 PList::~PList() {
 	emptyList();
 }
-ItemType PList::findIndex(ItemType inputData) { //This function is used to find the value in the index
+int PList::findIndex(ItemType inputData) { //This function is used to find the value in the index
 	node* item = start;
 	bool found = false;
 	int counter = 0;
 
-	while (item != NULL) 
+	while (item != NULL)
 	{
+
 		if (item->data.ComparedTo(inputData) == EQUAL)//while loop to advance the pointer till the end of the list
 		{
 			found = true;
-			return item->data;
+			return counter;
 		}
-		else
-			item = item->next;
+		else {
+		item = item->next;
+		counter++;
+		}
 	}
+	return -1;
 }
 void PList::removeItem(ItemType value) { //Used to remove unwanted items
 	node* item = start;
@@ -35,6 +39,7 @@ void PList::removeItem(ItemType value) { //Used to remove unwanted items
 			itemTrailer = start->next;
 			start = itemTrailer;
 			delete item;
+			item = NULL;
 		}
 		else {
 			delete item;
@@ -46,6 +51,7 @@ void PList::removeItem(ItemType value) { //Used to remove unwanted items
 			if (item->data.ComparedTo(value) == EQUAL) {
 				itemTrailer->next = item->next;
 				delete item;
+				item = NULL;
 			}
 			else {
 				itemTrailer = item;

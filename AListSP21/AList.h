@@ -27,7 +27,7 @@ public:
 	void Reset();
 	ItemType nextItem();
 	PList* Union(PList* unionList, PList* list1, PList* list2);
-	ItemType findIndex(ItemType inputData);
+	int findIndex(ItemType inputData);
 	void display();
 
 private:
